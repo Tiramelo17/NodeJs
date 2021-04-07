@@ -6,16 +6,17 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getTask(): any[] {
+  getTasks(): any[] {
     const task1 = {
       id: 1,
-      description: 'cozinhar',
-    }
+      description: 'Cozinhar o almoço',
+    };
 
     const task2 = {
-      id: 2, 
+      id: 2,
       description: 'Jogar video game',
     };
-    return [task1,task2];
+
+    return [task1, task2];
   }
 }
