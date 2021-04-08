@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   BadRequestException,
   ConflictException,
@@ -5,7 +7,8 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { FindUsersDto } from './dto/find-user.dto';
+import { UpdateUserDto } from './dto/update-usar.dto';
 import { User } from './user.model';
 
 @Injectable()
@@ -30,4 +33,23 @@ export class UserService {
   updateUser(id: number, updateUserDto: UpdateUserDto) {
     return this.userModel.update(updateUserDto, { where: { id: id } });
   }
+  
+  findUsers(findUsersDto: FindUsersDto): Promise<User[]> {
+    const where: any = {};
+
+    if (findUsersDto.name) {
+      where.name = findUsersDto.name;
+    }
+
+    if (findUsersDto.email) {
+      where.email = findUsersDto.email;
+    }
+
+    return this.userModel.findAll({ where });
+  }
+
+  deleteUser(id: string) {
+    return this.userModel.destroy({ where: { id } });
+  }
+
 }

@@ -1,4 +1,4 @@
-  
+/* eslint-disable prettier/prettier */
 import { IsNumberString, IsString, Length } from 'class-validator';
 
 export class UpdateUserDto {

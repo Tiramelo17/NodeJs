@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { IsEmail, IsNumberString, IsString, Length } from 'class-validator';
 
 export class CreateUserDto {
@@ -10,4 +11,5 @@ export class CreateUserDto {
   @IsNumberString()
   @Length(11, 11)
   phone: string;
+  // eslint-disable-next-line prettier/prettier
 }
