@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Column, HasMany, Model, Table, Unique } from 'sequelize-typescript';
 import { Task } from './task/task.model';
 
@@ -13,9 +12,6 @@ export class User extends Model {
   @Column
   phone: string;
 
-  @Column
-  password : number; 
-  
   @HasMany(() => Task)
-  task = Task
+  task: Task[];
 }

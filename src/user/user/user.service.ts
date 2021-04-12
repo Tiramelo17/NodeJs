@@ -1,21 +1,13 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   BadRequestException,
   ConflictException,
   Injectable,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Model } from 'sequelize';
-import model from 'sequelize/types/lib/model';
 import { CreateUserDto } from './dto/create-user.dto';
-import { FindUsersDto } from './dto/find-user.dto';
-import { UpdateUserDto } from './dto/update-usar.dto';
-import { TaskController } from './task/task.controller';
-import { Task } from './task/task.model';
-import { TaskModule } from './task/task.module';
+import { FindUsersDto } from './dto/find-users.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './user.model';
-
 
 @Injectable()
 export class UserService {
@@ -39,7 +31,7 @@ export class UserService {
   updateUser(id: number, updateUserDto: UpdateUserDto) {
     return this.userModel.update(updateUserDto, { where: { id: id } });
   }
-  
+
   findUsers(findUsersDto: FindUsersDto): Promise<User[]> {
     const where: any = {};
 
@@ -50,14 +42,11 @@ export class UserService {
     if (findUsersDto.email) {
       where.email = findUsersDto.email;
     }
-    
+
     return this.userModel.findAll({ where });
   }
 
   deleteUser(id: string) {
     return this.userModel.destroy({ where: { id } });
   }
-
-  
-
 }
