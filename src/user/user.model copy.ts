@@ -14,7 +14,7 @@ export class User extends Model {
   phone: string;
 
   @Column
-  password : string; 
+  password : number; 
   
   @HasMany(() => Task)
   task = Task

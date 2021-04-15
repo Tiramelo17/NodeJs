@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Body,
   Controller,
@@ -9,7 +10,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
-import { FindUsersDto } from './dto/find-user.dto';
+import { FindUsersDto } from './dto/find-users.dto';
 import { UpdateUserDto } from './dto/update-usar.dto';
 import { UserService } from './user.service';
 
@@ -35,4 +36,6 @@ export class UserController {
   async deleteUser(@Param('id') id: string): Promise<any> {
     return await this.userService.deleteUser(id);
   }
-}
+
+  }
+

@@ -22,8 +22,7 @@ export class TaskService {
 
    async findTask( userId : number): Promise<Task[]>{
         const where : any = {};;
-        where.userId = userId;
-
+        where.userId = userId
         return this.TaskModel.findAll({where});
    }
     

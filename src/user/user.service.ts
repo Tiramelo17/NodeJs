@@ -9,7 +9,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Model } from 'sequelize';
 import model from 'sequelize/types/lib/model';
 import { CreateUserDto } from './dto/create-user.dto';
-import { FindUsersDto } from './dto/find-user.dto';
+import { FindUsersDto } from './dto/find-users.dto';
 import { UpdateUserDto } from './dto/update-usar.dto';
 import { TaskController } from './task/task.controller';
 import { Task } from './task/task.model';
@@ -56,6 +56,10 @@ export class UserService {
 
   deleteUser(id: string) {
     return this.userModel.destroy({ where: { id } });
+  }
+
+  findFull(){
+    return this.userModel.findAll();
   }
 
   
