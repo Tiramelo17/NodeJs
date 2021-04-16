@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agenda.component.scss']
 })
 export class AgendaComponent implements OnInit {
-
+  panelOpenState = false;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() { };
 
