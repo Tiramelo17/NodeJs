@@ -1,18 +1,56 @@
-/* eslint-disable prettier/prettier */
 import { Component, OnInit } from '@angular/core';
+import { TaskService } from '../services';
+import { Task } from '../services/models';
 
 @Component({
   selector: 'app-agenda',
   templateUrl: './agenda.component.html',
-  styleUrls: ['./agenda.component.scss']
+  styleUrls: ['./agenda.component.scss'],
 })
 export class AgendaComponent implements OnInit {
-  panelOpenState = false;
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  constructor() { };
+  todos: Task[] = [];
+  todosForToday: Task[] = [];
+  todosForTomorrow: Task[] = [];
+  todosUpcoming: Task[] = [];
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  ngOnInit(): void {
+  constructor(private taskService: TaskService) {}
+
+  ngOnInit() {
+    this.taskService.onUpdateTasks().subscribe(() => {
+      this.init();
+    });
+
+    this.init();
   }
 
+  private init() {
+    this.listAllTasks();
+    this.listTasksForToday();
+    this.listTasksForTomorrow();
+    this.listUpcomingTasks();
+  }
+
+  listAllTasks() {
+    this.taskService
+      .listAllTask()
+      .subscribe((response) => (this.todos = response));
+  }
+
+  listTasksForToday() {
+    this.taskService
+      .listTasksForToday()
+      .subscribe((response) => (this.todosForToday = response));
+  }
+
+  listTasksForTomorrow() {
+    this.taskService
+      .listTasksForTomorrow()
+      .subscribe((response) => (this.todosForTomorrow = response));
+  }
+
+  listUpcomingTasks() {
+    this.taskService
+      .listUpcomingTasks()
+      .subscribe((response) => (this.todosUpcoming = response));
+  }
 }
