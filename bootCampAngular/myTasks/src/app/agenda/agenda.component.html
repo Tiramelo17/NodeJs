@@ -1,23 +1,32 @@
-<mat-accordion class="accordion-header" multi>
+<mat-accordion>
+
   <mat-expansion-panel>
     <mat-expansion-panel-header>
-      <mat-panel-title>Meu Dia</mat-panel-title>
+      <mat-panel-title>
+        Meu Dia
+      </mat-panel-title>
     </mat-expansion-panel-header>
-
-    <app-agenda-task [todos]="todosForToday"></app-agenda-task>
+    <app-agenda-task [tasks]="tarefas"></app-agenda-task>
   </mat-expansion-panel>
+
   <mat-expansion-panel>
     <mat-expansion-panel-header>
-      <mat-panel-title>Amanhã</mat-panel-title>
+      <mat-panel-title>
+        Amanhã
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
     </mat-expansion-panel-header>
-
-    <app-agenda-task [todos]="todosForTomorrow"></app-agenda-task>
+    <app-agenda-task [tasks]="tarefas"></app-agenda-task>
   </mat-expansion-panel>
+
   <mat-expansion-panel>
     <mat-expansion-panel-header>
-      <mat-panel-title>Próximos Dias</mat-panel-title>
+      <mat-panel-title>
+        Próximos Dias
+      </mat-panel-title>
     </mat-expansion-panel-header>
-
-    <app-agenda-task [todos]="todosUpcoming"></app-agenda-task>
+    <app-agenda-task [tasks]="tarefas"></app-agenda-task>
   </mat-expansion-panel>
+
 </mat-accordion>

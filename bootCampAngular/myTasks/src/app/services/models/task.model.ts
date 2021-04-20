@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export class Task {
   constructor(
     public title: string,
@@ -5,6 +6,6 @@ export class Task {
     public remindMe?: Date,
     public done = false,
     public createdAt = new Date(),
-    public id?: number
+    public id?: number,
   ){}
 }

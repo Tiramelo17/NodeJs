@@ -1,6 +1,6 @@
-# MyTasks
+# MyTaks
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
 
 ## Development server
 

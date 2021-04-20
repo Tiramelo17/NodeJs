@@ -1,42 +1,54 @@
+/* eslint-disable prettier/prettier */
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { AgendaComponent } from './agenda/agenda.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 
+import { AppComponent } from './app.component';
 import { AgendaTaskComponent } from './agenda-task/agenda-task.component';
 import { DialogAddTaskComponent } from './dialog-add-task/dialog-add-task.component';
-import { TasksComponent } from './tasks/tasks.component';
 
-import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core';
 
-import { MaterialModule } from './material.module';
 import { CoreModule } from './core';
+import { FormsModule } from '@angular/forms';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { TaskService } from './services/task.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AgendaComponent,
-    NotFoundComponent,
-    AgendaTaskComponent,
-    DialogAddTaskComponent,
-    TasksComponent,
-  ],
+  declarations: [AppComponent, AgendaComponent, AgendaTaskComponent, DialogAddTaskComponent],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
+    HttpClientModule,
     CoreModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatExpansionModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-br' }],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-br' },
+    TaskService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

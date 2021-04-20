@@ -10,7 +10,7 @@ import {
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { Task } from 'src/app/services/models';
+import { Task } from 'src/app/services/models/task.model';
 
 // array in local storage for registered tasks
 let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');

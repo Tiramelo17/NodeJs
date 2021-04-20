@@ -1,6 +1,7 @@
+/* eslint-disable prettier/prettier */
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../services';
-import { Task } from '../services/models';
+import { Task } from '../services/models/task.model';
+import { TaskService } from '../services/task.service';
 
 @Component({
   selector: 'app-dialog-add-task',
@@ -8,23 +9,17 @@ import { Task } from '../services/models';
   styleUrls: ['./dialog-add-task.component.scss'],
 })
 export class DialogAddTaskComponent implements OnInit {
-  title!: string;
-  notes!: string;
-  remindMe!: Date;
+  titulo: string = '';
+  notas: string = '';
+  meLembrarEm: Date = new Date();
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {}
 
   addTask() {
-    const task = new Task(this.title, this.notes, this.remindMe);
-    this.taskService.createTask(task).subscribe();
-  }
+    const tarefa = new Task(this.titulo, this.notas, this.meLembrarEm);
 
-  myFilter = (d: Date | null): boolean => {
-    const date = (d || new Date()).setHours(0, 0, 0, 0);
-    const today = new Date().setHours(0, 0, 0, 0);
-    // Prevent Saturday and Sunday from being selected.
-    return date >= today;
+    this.taskService.createTask(tarefa).subscribe();
   }
 }
