@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // https://jasonwatmore.com/post/2020/03/10/angular-8-fake-backend-example-for-backendless-development
 
 import { Injectable } from '@angular/core';
@@ -17,10 +18,7 @@ let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const { url, method, headers, body } = request;
 
     switch (true) {
@@ -54,14 +52,16 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function alterTask() {
-      let task = tasks.filter((x: any) => x.id === idFromUrl());
-      task = Object.assign(body, task)
+      let task = tasks.find((x: any) => x.id === idFromUrl());
+      task = Object.assign(body, task);
       localStorage.setItem('tasks', JSON.stringify(tasks));
 
       return ok();
     }
 
     function getTasks() {
+      const allTasks = tasks.sort((a: Task, b: Task) => (+new Date(b.remindMe) - +new Date(a.remindMe) <= 0 ? 1 : -1));
+
       return ok(tasks);
     }
 
@@ -69,9 +69,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       const today = new Date().setHours(0, 0, 0, 0);
 
       const _tasks = tasks.filter(
-        (task: Task) =>
-          task.remindMe &&
-          (+new Date(task.remindMe).setHours(0, 0, 0, 0) <= +today)
+        (task: Task) => task.remindMe && +new Date(task.remindMe).setHours(0, 0, 0, 0) <= +today
       );
 
       return ok(_tasks);
@@ -84,9 +82,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       tomorrow.setHours(0, 0, 0, 0);
 
       const _tasks = tasks.filter(
-        (task: Task) =>
-          task.remindMe &&
-          +new Date(task.remindMe).setHours(0, 0, 0, 0) === +tomorrow
+        (task: Task) => task.remindMe && +new Date(task.remindMe).setHours(0, 0, 0, 0) === +tomorrow
       );
 
       return ok(_tasks);
@@ -99,9 +95,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       tomorrow.setHours(0, 0, 0, 0);
 
       const _tasks = tasks.filter(
-        (task: Task) =>
-          task.remindMe &&
-          +new Date(task.remindMe).setHours(0, 0, 0, 0) > +tomorrow
+        (task: Task) => task.remindMe && +new Date(task.remindMe).setHours(0, 0, 0, 0) > +tomorrow
       );
 
       return ok(_tasks);

@@ -21,7 +21,7 @@
     <div class="col">
       <mat-form-field>
         <mat-label>Me lembrar em</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="meLembrarEm"/>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="meLembrarEm" />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -30,8 +30,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial
-    (click)="addTask()"
-
-  >Criar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="addTask()">Criar</button>
 </mat-dialog-actions>

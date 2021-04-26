@@ -1,7 +1,7 @@
-/* eslint-disable prettier/prettier */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AgendaComponent } from './agenda/agenda.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -9,6 +9,14 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'agenda'
   },
+  {
+    path: 'agenda',
+    component: AgendaComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
 ];
 
 @NgModule({

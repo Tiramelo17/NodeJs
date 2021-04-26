@@ -1,13 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Component, Input, OnInit } from '@angular/core';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { AgendaComponent } from '../agenda/agenda.component';
 import { Task } from '../services/models/task.model';
 import { TaskService } from '../services/task.service';
 
 @Component({
-  selector: 'app-agenda',
-  templateUrl: './agenda.component.html',
-  styleUrls: ['./agenda.component.scss']
+  selector: 'app-app-all-tasks',
+  templateUrl: './app-all-tasks.component.html',
+  styleUrls: ['./app-all-tasks.component.scss']
 })
-export class AgendaComponent implements OnInit {
+export class AppAllTasksComponent implements OnInit {
 
   tarefasParaHoje: Task[] = [];
   tarefasParaAmanha: Task[] = [];
@@ -62,3 +66,5 @@ export class AgendaComponent implements OnInit {
     );
   }
 }
+
+

@@ -1,0 +1,9 @@
+<mat-accordion multi>
+  <mat-panel-title>
+    Todas as tarefas
+  </mat-panel-title>
+    <app-agenda-task [tasks]="tarefasParaHoje"></app-agenda-task>
+    <app-agenda-task [tasks]="tarefasParaAmanha"></app-agenda-task>
+    <app-agenda-task [tasks]="tarefasParaOsProximosDias"></app-agenda-task>
+
+</mat-accordion>

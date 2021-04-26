@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../services/models/task.model';
 import { TaskService } from '../services/task.service';
